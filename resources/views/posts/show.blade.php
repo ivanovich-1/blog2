@@ -52,14 +52,15 @@
                             <div class="card-header pt-2">
                                 <strong>{{ $comment->name_user }}</strong>
                                 <small>{{ $comment->created_at }}</small>
-                                <form action="{{ route('posts.comments.destroy', $comment) }}" method="post" class="d-inline float-right">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-xs btn-danger" onclick="return confirm('¿Seguro que quieres eliminar este usuario?')">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </form>
-
+                                @if(auth()->user())
+                                    <form action="{{ route('posts.comments.destroy', $comment) }}" method="post" class="d-inline float-right">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-xs btn-danger" onclick="return confirm('¿Seguro que quieres eliminar este usuario?')">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
+                                @endif
                             </div>
                             <div class="card-body">
                                 <p>{{ $comment->comment }}</p>
