@@ -32,7 +32,7 @@
                     <button class="btn btn-primary" id="comments">Crear comentario</button>
                 </div>
                 <div class="card-body">
-                    {!! Form::open(['action' => route('posts.comments.store', $post->slug), 'method' => 'post']) !!}
+                    {!! Form::open(['action' => ['CommentsController@store', $post->slug], 'method' => 'post']) !!}
                         {{ Form::bsText('name_user', '', ['placeholder' => 'Inserte su nombre']) }}
                         {{ Form::bsTextArea('comment', '', ['rows' => '3', 'placeholder' => 'Inserte su comentario']) }}
                         {{ Form::bsSubmit('Crear comentario', ['class' => 'btn btn-primary']) }}
