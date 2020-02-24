@@ -32,14 +32,15 @@
                     <button class="btn btn-primary" id="comments">Crear comentario</button>
                 </div>
                 <div class="card-body">
-                    {!! Form::open(['action' => ['CommentsController@store', $post->slug], 'method' => 'post']) !!}
-                        {{ Form::bsText('name_user', '', ['placeholder' => 'Inserte su nombre']) }}
-                        {{ Form::bsTextArea('comment', '', ['rows' => '3', 'placeholder' => 'Inserte su comentario']) }}
-                        {{ Form::bsSubmit('Crear comentario', ['class' => 'btn btn-primary']) }}
-                    {!! Form::close() !!}
-
+                    <div id="create_comments">
+                        {!! Form::open(['action' => ['CommentsController@store', $post->slug], 'method' => 'post']) !!}
+                            {{ Form::bsText('Nombre', '', ['placeholder' => 'Inserte su nombre']) }}
+                            {{ Form::bsTextArea('Comentario', '', ['rows' => '3', 'placeholder' => 'Inserte su comentario']) }}
+                            {{ Form::bsSubmit('Crear comentario', ['class' => 'btn btn-primary mb-2']) }}
+                        {!! Form::close() !!}
+                    </div>
                     @forelse($post->comments as $comment)
-                        <div class="card card-primary card-outline with-border">
+                        <div class="card card-primary card-outline with-border mb-2">
                             <div class="card-header pt-2">
                                 <strong>{{ $comment->name_user }}</strong>
                                 <small>{{ $comment->created_at }}</small>

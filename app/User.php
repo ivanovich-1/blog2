@@ -13,6 +13,8 @@ class User extends Authenticatable
 
     use Notifiable, HasRoles, SoftDeletes;
 
+    protected  $dates=['deleted_at'];
+
     /**
      * The attributes that are mass assignable.
      *
