@@ -32,21 +32,12 @@
                     <button class="btn btn-primary" id="comments">Crear comentario</button>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('posts.comments.store', $post->slug) }}" method="post" id="create_comments">
-                        @csrf
-                        <div class="form-group col-md-6 m-auto pb-4">
-                            <label for="name_user" class="float-left">Nombre:</label>
-                            <input type="text" name="name_user" id="name_user" class="form-control ">
-                        </div>
-                        <div class="form-group col-md-6 m-auto pb-2">
-                            <label for="comment" class="float-left">Comentario:</label>
-                            <textarea class="form-control" rows="3" name="comment"
-                                      id="comment" placeholder="Inserte su comentario."></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary ">Crear</button>
-                        </div>
-                    </form>
+                    {!! Form::open(['action' => route('posts.comments.store', $post->slug), 'method' => 'post']) !!}
+                        {{ Form::bsText('name_user', '', ['placeholder' => 'Inserte su nombre']) }}
+                        {{ Form::bsTextArea('comment', '', ['rows' => '3', 'placeholder' => 'Inserte su comentario']) }}
+                        {{ Form::bsSubmit('Crear comentario', ['class' => 'btn btn-primary']) }}
+                    {!! Form::close() !!}
+
                     @forelse($post->comments as $comment)
                         <div class="card card-primary card-outline with-border">
                             <div class="card-header pt-2">

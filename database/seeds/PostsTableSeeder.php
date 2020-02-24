@@ -1,6 +1,7 @@
 <?php
 
 use App\Category;
+use App\Comment;
 use App\Post;
 use App\Tag;
 use Illuminate\Database\Seeder;
@@ -29,6 +30,8 @@ class PostsTableSeeder extends Seeder
                $p->tags()->attach(\Illuminate\Support\Arr::random($tags, 2));
             });
         });
+        factory(Comment::class, 3)->create();
+
 
     }
 }

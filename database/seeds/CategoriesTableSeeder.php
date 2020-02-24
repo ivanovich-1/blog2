@@ -12,16 +12,6 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        /*
-        $category = new Category();
-        $category->name = 'Categoria 1';
-        $category->save();
-
-        $category = new Category();
-        $category->name = 'Categoria 2';
-        $category->save();
-        */
-
         factory(Category::class, 10)->create();
     }
 }
