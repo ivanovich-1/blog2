@@ -3,18 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Http\Requests\CommentRequest;
 use App\Post;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
 {
-    public function store(Request $request, Post $post)
+    public function store(CommentRequest $request, Post $post)
     {
-        $this->validate($request, [
-            'name_user' => 'required',
-            'comment' => 'required'
-        ]);
-
         $post->comments()->create([
             'comment' => $request->comment,
             'name_user' => $request->name_user

@@ -34,8 +34,8 @@
                 <div class="card-body">
                     <div id="create_comments">
                         {!! Form::open(['action' => ['CommentsController@store', $post->slug], 'method' => 'post']) !!}
-                            {{ Form::bsText('Nombre', '', ['placeholder' => 'Inserte su nombre']) }}
-                            {{ Form::bsTextArea('Comentario', '', ['rows' => '3', 'placeholder' => 'Inserte su comentario']) }}
+                            {{ Form::bsText('name_user', '', ['placeholder' => 'Inserte su nombre']) }}
+                            {{ Form::bsTextArea('comment', '', ['rows' => '3', 'placeholder' => 'Inserte su comentario']) }}
                             {{ Form::bsSubmit('Crear comentario', ['class' => 'btn btn-primary mb-2']) }}
                         {!! Form::close() !!}
                     </div>
