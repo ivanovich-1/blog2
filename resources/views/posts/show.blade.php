@@ -17,6 +17,7 @@
 
             <footer class="container-flex space-between">
                @include('posts.tags')
+                <div class="float-left">Numero de visitas: {{ $post->visits }}</div>
             </footer>
             <div class="comments">
                 <div class="divider"></div>
@@ -29,22 +30,25 @@
             <div class="card card-primary card-outline text-center">
                 <div class="card-header with-border">
                     <h1>Comentarios</h1>
-                    <button class="btn btn-primary" id="comments">Crear comentario</button>
+                    @if(auth()->user())
+                        <button class="btn btn-primary" id="comments">Crear comentario</button>
+                    @endif
                 </div>
                 <div class="card-body">
-                    <div id="create_comments">
-                        {!! Form::open(['action' => ['CommentsController@store', $post->slug], 'method' => 'post']) !!}
-                            {{ Form::bsText('name_user', '', ['placeholder' => 'Inserte su nombre']) }}
-                            {{ Form::bsTextArea('comment', '', ['rows' => '3', 'placeholder' => 'Inserte su comentario']) }}
-                            {{ Form::bsSubmit('Crear comentario', ['class' => 'btn btn-primary mb-2']) }}
-                        {!! Form::close() !!}
-                    </div>
+                    @if(auth()->user())
+                        <div id="create_comments">
+                            {!! Form::open(['action' => ['CommentsController@store', $post->slug], 'method' => 'post']) !!}
+                                {{ Form::bsTextArea('comment', '', ['rows' => '3', 'placeholder' => 'Inserte su comentario']) }}
+                                {{ Form::bsSubmit('Crear comentario', ['class' => 'btn btn-primary mb-2']) }}
+                            {!! Form::close() !!}
+                        </div>
+                    @endif
                     @forelse($post->comments as $comment)
                         <div class="card card-primary card-outline with-border mb-2">
                             <div class="card-header pt-2">
                                 <strong>{{ $comment->name_user }}</strong>
                                 <small>{{ $comment->created_at }}</small>
-                                @if(auth()->user())
+                                @if(auth()->user() && auth()->user()->hasRole('Admin'))
                                     <form action="{{ route('posts.comments.destroy', $comment) }}" method="post" class="d-inline float-right">
                                         @csrf
                                         @method('delete')

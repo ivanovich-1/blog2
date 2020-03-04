@@ -137,6 +137,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
             </li>
             <li class="nav-item dropdown">
+                <a href="{{ route('pages.home') }}" class="btn btn-primary">Pagina inicio</a>
+            </li>
+            <li class="nav-item dropdown">
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
                     <button class="btn btn-default">Cerrar Sesíon</button>

@@ -29,7 +29,7 @@ Route::delete('comments/{comment}', 'CommentsController@destroy')->name('posts.c
 Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin',
-    'middleware' => 'auth'
+    'middleware' => ['auth', 'dashboardAccess']
 ], function (){
     Route::get('/', 'AdminController@index')->name('dashboard');
 
@@ -49,10 +49,17 @@ Route::group([
 
     Route::post('posts/{post}/photos', 'PhotosController@store')->name('admin.posts.photos.store');
     Route::delete('photos/{photo}', 'PhotosController@destroy')->name('admin.photos.destroy');
+
 });
 
 // Rutas de login
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
+
+
+
 

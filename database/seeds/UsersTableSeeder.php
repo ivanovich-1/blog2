@@ -14,8 +14,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $adminRole = Role::create(['name' => 'Admin']);
-        $writerRole = Role::create(['name' => 'Writer']);
+        $adminRole = Role::create(['name' => 'Admin', 'display_name' => 'Administrador']);
+        $writerRole = Role::create(['name' => 'Writer', 'display_name' => 'Escritor']);
+        $userRole = Role::create(['name' => 'User', 'display_name' => 'Usuario']);
 
         $viewPostPermission = Permission::create(['name' => 'View posts']);
         $createPostPermission = Permission::create(['name' => 'Create posts']);
@@ -36,6 +37,7 @@ class UsersTableSeeder extends Seeder
 
         $admin = new User;
         $admin->name = 'Ivan';
+        $admin->age = 22;
         $admin->email = 'ivan@gmail.com';
         $admin->password = '123456';
         $admin->save();
@@ -44,12 +46,22 @@ class UsersTableSeeder extends Seeder
 
         $writer = new User;
         $writer->name = 'Juan';
+        $writer->age = 45;
         $writer->email = 'juan@gmail.com';
         $writer->password = '123456';
         $writer->save();
 
         $writer->assignRole($adminRole);
         $writer->assignRole($writerRole);
+
+        $user = new User;
+        $user->name = 'Pedro';
+        $user->age = 25;
+        $user->email = 'pedro@gmail.com';
+        $user->password = '123456';
+        $user->save();
+
+        $user->assignRole($userRole);
 
         $users = factory(User::class, 8)->make();
 

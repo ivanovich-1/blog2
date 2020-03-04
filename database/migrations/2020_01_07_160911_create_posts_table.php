@@ -22,6 +22,9 @@ class CreatePostsTable extends Migration
             $table->mediumText('iframe')->nullable();
             $table->text('body')->nullable();
             $table->timestamp('published_at')->nullable();
+            $table->integer('visits')->default(0);
+            $table->integer('like')->default(0);
+            $table->integer('dislike')->default(0);
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->on('categories')->references('id')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');

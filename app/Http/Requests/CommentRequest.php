@@ -24,7 +24,6 @@ class CommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_user' => 'required | min:3',
             'comment' => 'required | max:100'
         ];
     }
@@ -32,8 +31,6 @@ class CommentRequest extends FormRequest
     public function messages()
     {
         return [
-            'name_user.required' => 'A name is required',
-            'name_user.min' => 'The name size is short',
             'comment.required' => 'A comment is required',
             'comment.max' => 'Comment size is long'
         ];

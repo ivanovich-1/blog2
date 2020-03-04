@@ -18,6 +18,7 @@
                     <div class="read-more">
                         <a href="{{ route('posts.show', [$post->slug]) }}" class="text-uppercase c-green">Leer más <i class="fa fa-chevron-circle-right"></i></a>
                     </div>
+                    <div>Numero de visitas: {{ $post->visits }}</div>
                     @include('posts.tags')
                 </footer>
             </div>

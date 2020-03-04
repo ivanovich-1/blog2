@@ -3,7 +3,7 @@
 @section('content')
     <div class="card card-primary card-outline col-md-6 m-auto">
         <div class="card-header with-border">
-            <h1 class="text-center">{{ $role->name }}</h1>
+            <h1 class="text-center">{{ $role->display_name }}</h1>
         </div>
         <div class="row">
             <div class="col-md-4">

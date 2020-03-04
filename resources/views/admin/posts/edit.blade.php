@@ -107,33 +107,35 @@
                                                 $post->published_at->format('m/d/Y') : null) }}">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="category_id">Categorias</label>
-                                    <select name="category_id" class="form-control select2 {{ $errors->has('category_id') ? 'is-invalid' : '' }}"
-                                            id="category_id">
-                                        <option value="">Selecciona una categoria</option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}"
-                                                {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}>
-                                                {{ $category->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    {!! $errors->first('category_id', '<span class="form-text text-danger">:message</span>') !!}
-                                </div>
-                                <div class="form-group">
-                                    <label>Etiquetas</label>
-                                    <select name="tags[]" class="form-control select2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" multiple="multiple" data-placeholder="Etiquetas" style="width: 100%;">
-                                        @foreach($tags as $tag)
-                                            <option value="{{ $tag->id }}" {{ collect(old('tags', $post->tags
-                                                                                ->pluck('id')))
-                                                                                ->contains($tag->id) ? 'selected' : '' }}>
-                                                {{ $tag->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    {!! $errors->first('tags', '<span class="form-text text-danger">:message</span>') !!}
-                                </div>
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="category_id">Categorias</label>--}}
+{{--                                    <select name="category_id" class="form-control select2 {{ $errors->has('category_id') ? 'is-invalid' : '' }}"--}}
+{{--                                            id="category_id">--}}
+{{--                                        <option value="">Selecciona una categoria</option>--}}
+{{--                                        @foreach ($categories as $category)--}}
+{{--                                            <option value="{{ $category->id }}"--}}
+{{--                                                {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}>--}}
+{{--                                                {{ $category->name }}--}}
+{{--                                            </option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                    {!! $errors->first('category_id', '<span class="form-text text-danger">:message</span>') !!}--}}
+{{--                                </div>--}}
+                                {{ Form::bsSelect('category_id', $categories->pluck('name'), $post->category_id) }}
+{{--                                <div class="form-group">--}}
+{{--                                    <label>Etiquetas</label>--}}
+{{--                                    <select name="tags[]" class="form-control select2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" multiple="multiple" data-placeholder="Etiquetas" style="width: 100%;">--}}
+{{--                                        @foreach($tags as $tag)--}}
+{{--                                            <option value="{{ $tag->id }}" {{ collect(old('tags', $post->tags--}}
+{{--                                                                                ->pluck('id')))--}}
+{{--                                                                                ->contains($tag->id) ? 'selected' : '' }}>--}}
+{{--                                                {{ $tag->name }}--}}
+{{--                                            </option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                    {!! $errors->first('tags', '<span class="form-text text-danger">:message</span>') !!}--}}
+{{--                                </div>--}}
+                                {{ Form::bsSelect('tags[]', $tags->pluck('name'), $post->tags, ['multiple' => 'multiple', 'class' => 'form-control select2']) }}
                                 <div class="form-group">
                                     <label for="excerpt">Extracto del post</label>
                                     <textarea name="excerpt" id="excerpt" placeholder="Escribe un extracto del post"

@@ -13,7 +13,8 @@ class CommentsController extends Controller
     {
         $post->comments()->create([
             'comment' => $request->comment,
-            'name_user' => $request->name_user
+            'name_user' => auth()->user()->name,
+            'user_id' => auth()->user()->id
         ]);
 
         return redirect()->route('posts.show', $post->slug)->withFlash('Comentario creado con exito');

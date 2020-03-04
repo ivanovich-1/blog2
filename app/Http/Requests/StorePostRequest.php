@@ -24,11 +24,23 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'required | min:3',
             'body' => 'required',
             'excerpt' => 'required',
             'category_id' => 'required',
             'tags' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'title.required' => __('postUpdate.title.required'),
+            'title.min' => __('postUpdate.title.min'),
+            'body.required' => __('postUpdate.body.required'),
+            'excerpt.required' => __('postUpdate.excerpt.required'),
+            'category_id.required' => __('postUpdate.category_id.required'),
+            'tags' => __('postUpdate.tags.required')
         ];
     }
 }

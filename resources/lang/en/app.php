@@ -6,6 +6,9 @@ return [
         'about' => 'ABOUT',
         'archive' => 'ARCHIVE',
         'contact' => 'CONTACT',
-
+        'login' => 'Login',
+        'register' => 'Register',
+        'dashboard' => 'Dashboard',
+        'logout' => 'Logout'
     ],
 ];

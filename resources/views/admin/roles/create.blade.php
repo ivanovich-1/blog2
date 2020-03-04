@@ -18,6 +18,10 @@
                                     <input type="text" name="name" value="{{ old('name') }}" class="form-control">
                                 </div>
                                 <div class="form-group">
+                                    <label for="display_name">Nombre que se desea mostrar:</label>
+                                    <input type="text" name="display_name" value="{{ old('display_name') }}" class="form-control">
+                                </div>
+                                <div class="form-group">
                                     <label for="guard">Guard:</label>
                                     <select name="guard_name" class="form-control">
                                         @foreach(config('auth.guards') as $guardName => $guardOptions)

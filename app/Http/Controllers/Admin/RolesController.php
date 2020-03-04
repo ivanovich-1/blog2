@@ -45,6 +45,7 @@ class RolesController extends Controller
         $this->authorize('create', new Role);
         $data = $this->validate($request, [
             'name' => 'required | unique:roles',
+            'display_name' => 'required | min:4',
             'guard_name' => 'required'
         ]);
 
@@ -93,7 +94,7 @@ class RolesController extends Controller
     {
         $this->authorize('update', $role);
         $data = $this->validate($request, [
-            'name' => 'required | unique:roles,name,' . $role->id,
+            'display_name' => 'required | min:4',
             'guard_name' => 'required'
         ]);
 

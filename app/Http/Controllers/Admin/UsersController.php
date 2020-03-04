@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Events\UserWasCreated;
 use App\Http\Requests\UpdateUserRequest;
-use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
