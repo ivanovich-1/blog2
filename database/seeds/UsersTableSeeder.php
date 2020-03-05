@@ -35,6 +35,9 @@ class UsersTableSeeder extends Seeder
 
         $deleteCommentPermission = Permission::create(['name' => 'Delete comments']);
 
+        $adminRole->givePermissionTo($viewRolePermission);
+        $adminRole->givePermissionTo($deleteRolePermission);
+
         $admin = new User;
         $admin->name = 'Ivan';
         $admin->age = 22;

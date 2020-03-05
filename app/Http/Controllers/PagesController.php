@@ -10,7 +10,7 @@ class PagesController extends Controller
 {
     public function home()
     {
-        $posts = Post::published()->paginate(10);
+        $posts = Post::visited()->published()->paginate(10);
         return view('pages.home', compact('posts'));
     }
 

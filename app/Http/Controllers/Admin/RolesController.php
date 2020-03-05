@@ -16,6 +16,7 @@ class RolesController extends Controller
      */
     public function index()
     {
+        $this->authorize('view', new Role);
         $roles = Role::all();
 
         return view('admin.roles.index', compact('roles'));
@@ -119,7 +120,9 @@ class RolesController extends Controller
     {
         $this->authorize('delete', $role);
 
-        $role->delete();
+        if($role->name != 'Admin') {
+            $role->delete();
+        }
 
         return redirect()->route('admin.roles.index')->withFlash('Se ha eliminado el rol correctamente');
     }

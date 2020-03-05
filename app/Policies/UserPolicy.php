@@ -14,16 +14,7 @@ class UserPolicy
         return $authUser->hasRole('Admin') ? true : null;
     }
 
-    /**
-     * Determine whether the user can view any models.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
-    public function viewAny(User $user)
-    {
-        //
-    }
+
 
     /**
      * Determine whether the user can view the model.
@@ -70,29 +61,5 @@ class UserPolicy
     public function delete(User $authUser, User $user)
     {
         return $authUser->id === $user->id || $authUser->hasPermissionTo('Delete users');
-    }
-
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\User  $user
-     * @param  \App\User  $model
-     * @return mixed
-     */
-    public function restore(User $authUser, User $user)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\User  $user
-     * @param  \App\User  $model
-     * @return mixed
-     */
-    public function forceDelete(User $user, User $model)
-    {
-        //
     }
 }

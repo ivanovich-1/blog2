@@ -79,6 +79,12 @@ class Post extends Model
             ->latest('published_at');
     }
 
+    public function scopeVisited($query)
+    {
+        $query->whereNotNull('visits')
+            ->orderby('visits', 'desc');
+    }
+
     public function scopeAllowed($query)
     {
         if (auth()->user()->can('view', $this)) {

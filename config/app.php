@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         App\Providers\FormServiceProvider::class,
+        Styde\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
